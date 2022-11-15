@@ -19,6 +19,7 @@ from django.urls import path
 import viewer.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login/', viewer.views.login)
+    # path('admin/', admin.site.urls),
+    path('login/', viewer.views.login),
+    path('register/', viewer.views.register)
 ]
