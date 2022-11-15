@@ -21,5 +21,6 @@ import viewer.views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('login/', viewer.views.login),
-    path('register/', viewer.views.register)
+    path('register/', viewer.views.register),
+    path('userinfo/', viewer.views.userinfo),
 ]
