@@ -33,7 +33,7 @@ def register(request):
         user_uid = user_uuid[:8]
         print(user_uid, user_uuid)
 
-        UserInfo.objects.create(email=email, passwd=passwd, user_uid=user_uid, user_uuid=user_uuid)
+        UserInfo.objects.create(email=email, passwd=passwd, user_uid=user_uid, user_uuid=user_uuid, dirty=1)
         return redirect('/login/')
 
 
