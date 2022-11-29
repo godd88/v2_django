@@ -4,15 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <title>we2say</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
 </head>
 <body>
 <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-10">
         <img height="100px" width="300px" src="{% static 'img/we2say.png' %}">
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
+        <p class="bg-primary" style="background: #0f0f0f">
+            <span style="font-size: 22px; font-weight:600; color: white">email</span>:<br>
+            <span style="font-size: 19px; color: orange">{{ info.email }}</span></p>
     </div>
 </div>
-<h1>用户信息</h1>
+
+<h2>信息</h2>
+<hr>
+<span style="font-size: 30px">订阅地址</span><br>
+<span style="color: orange; font-size: 18px">{{ subscribeurl }}{{ info.uuid }}/</span>
+<hr>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>到期时间</th>
+        <th>最后登录时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <!--<td>{{ info.expiry }}</td>-->
+        <td> "消极开发中..." </td>
+        <td>20222020</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>套餐</h2>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>套餐时长</th>
+        <th>7天</th>
+        <th>28天</th>
+        <th>84天</th>
+        <th>168天</th>
+        <th>1年</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>价格</td>
+        <td>还</td>
+        <td>在</td>
+        <td>思</td>
+        <td>考</td>
+        <td>中</td>
+{#        <td>5</td>#}
+{#        <td>15</td>#}
+{#        <td>40</td>#}
+{#        <td>72</td>#}
+{#        <td>150</td>#}
+    </tr>
+    <tr>
+        <td>链接</td>
+        <td><a href=""><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></a></td>
+        <td><a href=""><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></a></td>
+        <td><a href=""><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></a></td>
+        <td><a href=""><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></a></td>
+        <td><a href=""><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></a></td>
+    </tr>
+    </tbody>
+</table>
+<h2>教程</h2>
+<ul class="list-group">
+  <li class="list-group-item">Android</li>
+  <li class="list-group-item">windows</li>
+  <li class="list-group-item">Mac</li>
+  <li class="list-group-item">iphone</li>
+  <li class="list-group-item">gnu/linux</li>
+</ul>
+<h2>联系</h2>
+<hr>
+<div>telegram: </div>
+<div>email: </div>
+
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.js' %}"></script>
 </body>
 </html>
