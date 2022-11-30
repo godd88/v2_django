@@ -4,6 +4,5 @@ VPS_INFO = [  # host, addr, ps
     ('www.u2hk.ml', '193.134.209.126', '香港'),
 ]
 
-V2_SUB_URL = 'http://www.we2say.cf/sbrn2mXi/'
-
-V2_PATH = 'uji87ha6'
+# V2_SUB_URL = 'https://www.we2say.cf/sbrn2mXi/'
+V2_SUB_URL = 'http://127.0.0.1:8000/sbrn2mXi/'

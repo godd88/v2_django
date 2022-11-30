@@ -89,4 +89,5 @@ def subscribe(request, user_uuid):
     # if not info:
     #     return redirect('/login/')
     # user_uuid = info['uuid']
+
     return HttpResponse(vmess64.encode_sub(user_uuid))
