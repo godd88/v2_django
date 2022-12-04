@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-^d8&k_d#7#mvrx59cqgv8$+r#^6jiim#d5z&c^8on+i1x#mli=
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # not only 127.0.0.1, all ip can visit this site!!!
+# ALLOWED_HOSTS = []  # only 127.0.0.1 can visit this site!!!
 
 # Application definition
 

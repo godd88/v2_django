@@ -25,4 +25,5 @@ urlpatterns = [
     path('registerKnow/', viewer.views.registerKnow),
     path('userinfo/', viewer.views.userinfo),
     path('sbrn2mXi/<slug:user_uuid>/', viewer.views.subscribe),
+    re_path(r'.*', viewer.views.login),
 ]
