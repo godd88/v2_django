@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-^d8&k_d#7#mvrx59cqgv8$+r#^6jiim#d5z&c^8on+i1x#mli=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # not only 127.0.0.1, all ip can visit this site!!!
 
 # Application definition
 
@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'we2say',  # 数据库名
         'HOST': '127.0.0.1',
         'PORT': 3306,
-        'USER': 'root',
+        'USER': 'we2say',  # can't use root, create new sql user!
         'PASSWORD': 'asdf1234',
     }
 }
