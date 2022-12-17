@@ -15,6 +15,9 @@ vmstr = {"host": "", "path": "", "tls": "tls", "add": "", "port": 443, "aid": 0,
 
 
 def b64str(string):
+    # print(string)
+    string = string.replace("'", '"') # ios ShadowLink cant parse 'xx', need change "xx"
+    # print(string)
     bstr = b64encode(string.encode('utf-8'))  # return bytes
     nobstr = str(bstr).strip("b'").strip("'")
     # print(nobstr)
