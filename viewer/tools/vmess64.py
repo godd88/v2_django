@@ -5,7 +5,7 @@ import pymysql
 MYSQL_CONF = {
     'host': '127.0.0.1',
     'port': 3306,
-    'user': 'root',
+    'user': 'we2say',
     'passwd': 'asdf1234',
     'db': 'we2say'
 }
