@@ -1,5 +1,5 @@
 from base64 import b64encode
-from viewer.config import VPS_INFO
+from viewer.config import VMESS_VPS_INFO, VLESS_VPS_INFO
 import pymysql
 
 MYSQL_CONF = {
@@ -10,8 +10,12 @@ MYSQL_CONF = {
     'db': 'we2say'
 }
 
+# vmess ws tls 443
 vmstr = {"host": "", "path": "", "tls": "tls", "add": "", "port": 443, "aid": 0, "net": "ws", "type": "none",
          "v": "2", "ps": "mark", "id": ""}
+# vless
+vlstr = "vless://UUID@ADDR:PORT?flow=xtls-rprx-direct&encryption=none&security=xtls&type=tcp&headerType=none&host=HOST#PS\n"
+
 
 
 def b64str(string):
@@ -39,7 +43,7 @@ def encode_sub(uuid):
     path = '/'+r[0]
 
     subscribe = ""
-    for item in VPS_INFO:
+    for item in VMESS_VPS_INFO:
         vmstr["host"] = item[0]
         vmstr["add"] = item[0]
         vmstr["ps"] = item[2]
@@ -47,6 +51,13 @@ def encode_sub(uuid):
         vmstr["path"] = path
         server = b64str(str(vmstr))
         subscribe += "vmess://" + server + "\n"
+    for item in VLESS_VPS_INFO: # 使用全局字符串变量可以,但是如果涉及修改一定要先声明
+        vlstrs = vlstr.replace('UUID', uuid)
+        vlstrs = vlstrs.replace('PORT', item[3])
+        vlstrs = vlstrs.replace('ADDR', item[0])
+        vlstrs = vlstrs.replace('HOST', item[0])
+        vlstrs = vlstrs.replace('PS', item[2])
+        subscribe += vlstrs
     subscribe = b64str(subscribe)
     # print(subscribe)
     return subscribe
