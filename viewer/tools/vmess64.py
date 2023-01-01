@@ -1,5 +1,5 @@
 from base64 import b64encode
-from viewer.config import VMESS_VPS_INFO, VLESS_VPS_INFO
+from viewer.config import VMESS_VPS_INFO, VLESS_TCP_VPS_INFO, VLESS_WS_VPS_INFO
 import pymysql
 
 MYSQL_CONF = {
@@ -13,8 +13,10 @@ MYSQL_CONF = {
 # vmess ws tls 443
 vmstr = {"host": "", "path": "", "tls": "tls", "add": "", "port": 443, "aid": 0, "net": "ws", "type": "none",
          "v": "2", "ps": "mark", "id": ""}
-# vless
-vlstr = "vless://UUID@ADDR:PORT?flow=xtls-rprx-direct&encryption=none&security=xtls&type=tcp&headerType=none&host=HOST#PS\n"
+# vless xtls # 这种方式 舍弃不用了,还是过cdn保ip的好,要高速就 trojan 非443
+vl_tcp_str = "vless://UUID@ADDR:PORT?flow=xtls-rprx-direct&encryption=none&security=xtls&type=tcp&headerType=none&host=HOST#PS\n"
+# vless tls ws 过 cdn,  port只能443, 统一path=/DGYxTczl
+vl_ws_str = "vless://UUID@ADDR:443?encryption=none&security=tls&type=ws&host=HOST&path=%2FDGYxTczl#PS\n"
 
 
 
@@ -51,9 +53,15 @@ def encode_sub(uuid):
         vmstr["path"] = path
         server = b64str(str(vmstr))
         subscribe += "vmess://" + server + "\n"
-    for item in VLESS_VPS_INFO: # 使用全局字符串变量可以,但是如果涉及修改一定要先声明
-        vlstrs = vlstr.replace('UUID', uuid)
+    for item in VLESS_TCP_VPS_INFO: # 使用全局字符串变量可以,但是如果涉及修改一定要先声明
+        vlstrs = vl_tcp_str.replace('UUID', uuid)
         vlstrs = vlstrs.replace('PORT', item[3])
+        vlstrs = vlstrs.replace('ADDR', item[0])
+        vlstrs = vlstrs.replace('HOST', item[0])
+        vlstrs = vlstrs.replace('PS', item[2])
+        subscribe += vlstrs
+    for item in VLESS_WS_VPS_INFO: # 使用全局字符串变量可以,但是如果涉及修改一定要先声明
+        vlstrs = vl_ws_str.replace('UUID', uuid)
         vlstrs = vlstrs.replace('ADDR', item[0])
         vlstrs = vlstrs.replace('HOST', item[0])
         vlstrs = vlstrs.replace('PS', item[2])
